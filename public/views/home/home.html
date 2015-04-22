@@ -1,0 +1,23 @@
+<div class="jumbotron">
+  <h1>bb<i>Desk</i>&nbsp<span class="glyphicon glyphicon-apple" aria-hidden="true"></span></h1>
+  <p>cool shit u wanna get done <i>streamlined</i>.</p>
+  <p><button class="btn btn-primary btn-lg" ng-click="open()">Learn more</button></p>
+</div>
+
+<div class="container" ng-controller="HomeController">
+	<!-- CREATE ABOUT MODAL -->
+	<script type="text/ng-template" id="myHomeModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">about</h3>
+        </div>
+        <div class="modal-body">
+        	<p>bbDesk is a MEAN stack application. It does all this sick shit that u kno u need to get done</p>
+        </div>
+
+        <div ng-show="!currentUser" class="modal-footer">
+            <button class="btn btn-primary" ng-click="loginOrRegister('/login')">log in</button>
+            <button class="btn btn-warning" ng-click="loginOrRegister('/register')">register</button>
+        </div>
+    </script>
+    <!-- / ABOUT MODAL -->
+</div>

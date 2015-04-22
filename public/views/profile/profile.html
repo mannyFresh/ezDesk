@@ -1,0 +1,83 @@
+
+<h1></h1>
+<script type="text/javascript">
+window.onresize = function(){ location.reload(); }
+
+    $(document).ready(function() {
+        $(window).resize(function() {
+            $("#chartData").hide().fadeIn('fast');
+        });
+    });
+
+</script>
+
+<div class="container" ng-show="currentUser.roles.indexOf('admin') == -1">
+    <tabset>
+        <tab heading="{{currentUser.username}}">
+            <br>
+                <div class="form-group col-sm-10">
+                    <label for="deskInput" class="control-label col-sm-2">desk type:</label>
+                    <div class="col-sm-9 input-group">
+                        <select class="form-control" id="deskInput" ng-model="currentUser.desk">
+                            <option value="">Select One</option>
+                            <option value="Basic Desk">Basic Desk</option>
+                            <option value="Standing Desk">Standing Desk</option>
+                            <option value="Mega Desk">Mega Desk</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <button ng-disabled="!currentUser.desk" class="btn btn-success" ng-click="update(currentUser)">save desk type</button>
+                </div>
+        </tab>
+    </tabset>
+</div>
+
+<div class="container">
+    <div ng-controller="ProfileCtrl" ng-show="currentUser.roles.indexOf('admin') != -1">
+        <tabset>
+        <tab heading="Desks">
+            <div class="units-row ng-scope" id="chartData">
+              <center>
+                  <div class="unit-20 mini-chart ng-scope" ng-repeat="example in deskData">
+                    <pie-chart data="example.data" options="example.options"></pie-chart>
+                  </div>
+              </center>
+            </div>
+        </tab>
+        <tab heading="Employees">
+            <div ng-controller="ProfileCtrl">
+                <table st-table="usersDisplay" st-safe-src="users" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th st-sort="username">username</th>
+                            <th st-sort="desk">desk type</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input st-search="username" placeholder="search for username..." class="input-sm form-control" type="search"/>
+                            </th>
+                            <th>
+                                <input st-search="desk" placeholder="search for desk type..." class="input-sm form-control" type="search"/>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in usersDisplay">
+                            <td>{{user.username}}</td>
+                            <td>{{user.hasOwnProperty('desk') ? user.desk : "No Desk Selected"}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <div st-pagination="" st-items-by-page="10"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </tab>
+      </tabset>
+    </div>
+</div>
