@@ -1,16 +1,14 @@
 
 <h1></h1>
 <script type="text/javascript">
-window.onresize = function(){ location.reload(); }
-
     $(document).ready(function() {
+        //
         $(window).resize(function() {
             $("#chartData").hide().fadeIn('fast');
         });
     });
 
 </script>
-
 <div class="container" ng-show="currentUser.roles.indexOf('admin') == -1">
     <tabset>
         <tab heading="{{currentUser.username}}">
@@ -32,9 +30,8 @@ window.onresize = function(){ location.reload(); }
         </tab>
     </tabset>
 </div>
-
 <div class="container">
-    <div ng-controller="ProfileCtrl" ng-show="currentUser.roles.indexOf('admin') != -1">
+    <div ng-controller="ProfileController" ng-show="currentUser.roles.indexOf('admin') != -1">
         <tabset>
         <tab heading="Desks">
             <div class="units-row ng-scope" id="chartData">
@@ -46,7 +43,7 @@ window.onresize = function(){ location.reload(); }
             </div>
         </tab>
         <tab heading="Employees">
-            <div ng-controller="ProfileCtrl">
+            <div ng-controller="ProfileController">
                 <table st-table="usersDisplay" st-safe-src="users" class="table table-striped">
                     <thead>
                         <tr>

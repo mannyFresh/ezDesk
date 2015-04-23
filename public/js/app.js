@@ -1,8 +1,8 @@
 
-var app = angular.module("PassportApp", ["ngRoute", "smart-table", "ui.bootstrap", "n3-pie-chart"]);
+var app = angular.module("ezDeskApp", ["ngRoute", "smart-table", "ui.bootstrap", "n3-pie-chart"]);
 
-//Controller for NHLStats app
-app.controller('PassportAppController', function ($scope, $http, $location) {
+//Controller for ezDeskApp
+app.controller('ezDeskAppController', function ($scope, $http, $location) {
     $http.get('/loggedin').success(function (user) {
         $scope.user = user;
     });
@@ -23,18 +23,18 @@ app.config(function($routeProvider, $httpProvider) {
       })
       .when('/profile', {
           templateUrl: 'views/profile/profile.html',
-          controller: 'ProfileCtrl',
+          controller: 'ProfileController',
           resolve: {
               loggedin: checkLoggedin
           }
       })
       .when('/login', {
           templateUrl: 'views/login/login.html',
-          controller: 'LoginCtrl'
+          controller: 'LoginController'
       })
       .when('/register', {
           templateUrl: 'views/register/register.html',
-          controller: 'RegisterCtrl'
+          controller: 'RegisterController'
       })
       .otherwise({
           redirectTo: '/profile'

@@ -1,5 +1,5 @@
 app.controller("HomeController", function($scope, $modal, $http, $log) {
-	   $scope.open = function (size) {
+	$scope.open = function (size) {
 
     var modalInstance = $modal.open({
       templateUrl: 'myHomeModalContent.html',
@@ -19,5 +19,4 @@ angular.module('ui.bootstrap').controller('ModalHomeInstanceCtrl', function ($sc
     $modalInstance.close();
     $location.path(path);
   };
-
 });
