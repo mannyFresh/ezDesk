@@ -62,7 +62,7 @@
                     <tbody>
                         <tr ng-repeat="user in usersDisplay">
                             <td>{{user.username}}</td>
-                            <td>{{user.hasOwnProperty('desk') ? user.desk : "No Desk Selected"}}</td>
+                            <td>{{user.hasOwnProperty('desk') ? user.desk : user.desk = "No Desk Selected"}}</td>
                         </tr>
                     </tbody>
                     <tfoot>
